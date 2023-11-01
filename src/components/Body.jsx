@@ -1,42 +1,16 @@
-import noImage from '../assets/images/noimage.jpg'
 import { ReactEventHandler, useEffect, useState } from 'react';
 
 
-const Body = () => {
+const Body = ({search,posts,setPosts}) => {
 
-    function searchPost(e:ReactEventHandler) {
+    function searchPost(e) {
 
     }
 
 
 
-    const [postsBase, setPostBase] = useState([
-        {   
-            id:Math.random(),
-            title: 'Как быстро изучить JavaScript?',
-            tags: ['JavaScript','ES6'],
-            image: noImage,
-            content: '',
-            information: {
-                views: 10000,
-                likes: 332,
-                comments: 29,
-            }
-        },
-        {
-            id:Math.random(),
-            title: 'Основы React',
-            tags: ['React','Redux'],
-            image: noImage,
-            content: '',
-            information: {
-                views: 3423,
-                likes: 54,
-                comments: 9,
-            }
-        },])
+ 
 
-    const [posts,setPosts] = useState([...postsBase])
 
     return (
         <>
@@ -54,7 +28,7 @@ const Body = () => {
                             <button className="h-11 bg-white p-0 rounded-lg pl-3 pr-3 font-medium">Создать пост</button>
                         </div>
                     </div>
-                    <div className="central-block-posts mt-5 w-full">
+                    <div className="central-block-posts mt-5 w-full" key={Math.random()}>
                         {posts.map((post)=>{
                             return(<>
                                 <div className="central-block-post h-52 w-full p-5 rounded-2xl" key={post.id}>
@@ -77,7 +51,6 @@ const Body = () => {
                                 </div>
                             </>)
                         })}
-
                     </div>
                 </div>
                 <div className="block sticky rightbar"></div>

@@ -6,14 +6,11 @@ import groupsIcon from '../assets/icons/groups.svg'
 import newsIcon from '../assets/icons/news.svg'
 import { useState } from 'react';
 
-const Header = ({search,setSearch}) => {
+const Header = ({search,setSearch,filterPosts}) => {
 
 
 
 
-    function searchHandler(e) {
-        setSearch(e.target.value)
-    }
 
     return (
         <div className="wrapper sticky top-0 z-50">
@@ -31,8 +28,8 @@ const Header = ({search,setSearch}) => {
                     </li>
                 </ul>
                 <div className="header-search w-1/4 h-1/2 flex rounded-lg pr-5 pl-5 justify-between mr-2">
-                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск" value={search} onChange={searchHandler}/>
-                    <img className='w-5 cursor-pointer' src={searchIcon} alt="search" />
+                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск" value={search} onChange={((e)=>setSearch(e.target.value))} onBlur={filterPosts}/>
+                    <img className='w-5 cursor-pointer' src={searchIcon} alt="search" onClick={filterPosts}/>
                 </div>
                 <div className="messages-group flex">
                     <a href="#"><img className='p-2 rounded-lg mr-4 w-10' src={messageIcon} alt="messages" /></a>
