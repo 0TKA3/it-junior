@@ -4,8 +4,17 @@ import notificationIcon from '../assets/icons/notifications.svg'
 import homeIcon from '../assets/icons/home.svg'
 import groupsIcon from '../assets/icons/groups.svg'
 import newsIcon from '../assets/icons/news.svg'
+import { useState } from 'react';
 
-const Header = () => {
+const Header = ({search,setSearch}) => {
+
+
+
+
+    function searchHandler(e) {
+        setSearch(e.target.value)
+    }
+
     return (
         <div className="wrapper sticky top-0 z-50">
             <header className="nav-header flex h-20 w-full items-center pr-5 pl-5 justify-around">
@@ -22,7 +31,7 @@ const Header = () => {
                     </li>
                 </ul>
                 <div className="header-search w-1/4 h-1/2 flex rounded-lg pr-5 pl-5 justify-between mr-2">
-                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск"/>
+                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск" value={search} onChange={searchHandler}/>
                     <img className='w-5 cursor-pointer' src={searchIcon} alt="search" />
                 </div>
                 <div className="messages-group flex">
