@@ -40,7 +40,11 @@ const [posts,setPosts] = useState([...postsBase])
     setPosts(postsBase.filter((post)=>{
       if(post.title.toLowerCase().includes(search.toLowerCase())){
         return true
-      } else {
+      }
+      if(post.tags.map((el)=>el.toLowerCase()).includes(search.toLowerCase())) {
+        return true
+      }
+       else {
         return false
       }
     }))

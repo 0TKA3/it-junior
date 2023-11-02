@@ -3,19 +3,29 @@ import { ReactEventHandler, useEffect, useState } from 'react';
 
 const Body = ({search,posts,setPosts}) => {
 
-    function searchPost(e) {
-
-    }
-
-
-
- 
-
+    const [popularTags, setPopularTags] = useState([
+        {
+            tagName: 'javascript',
+            tagImage: '',
+            tagCount: '',
+        },
+    ])
 
     return (
         <>
             <div className="main-body parent mt-5">
-                <div className="block sticky sidebar"></div>
+                <div className="block sticky sidebar">
+                    <div className="sidebar-popular-tags w-full h-auto rounded-2xl p-5 flex flex-col">
+                        <h1 className='text-xl font-medium text-white'>Popular Tags</h1>
+                        {popularTags.map(()=>{
+                            return(
+                                <div className='tag flex'>
+                                    <div className="pop-tag-image h-full w-auto"><img src="#" alt="#" /></div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
                 <div className="block central-block">
                     <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4">
                         <div className="nav-profile-picture w-10 h-10 rounded-md bg-cyan-300 flex items-center justify-center mr-3">
