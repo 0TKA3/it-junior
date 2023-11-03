@@ -3,10 +3,12 @@ import Header from './components/Header'
 import Body from './components/Body'
 import './assets/style/style.css'
 import noImage from './assets/images/noimage.jpg'
+import CreatePostModal from './components/CreatePostModal'
 
 
 function App() {
 
+  const [modalVisibility,setModalVisibility] = useState('modal none')
   const [search, setSearch] = useState('')
   const [postsBase, setPostBase] = useState([
     {   
@@ -32,7 +34,20 @@ function App() {
             likes: 54,
             comments: 9,
         }
-    },])
+    },
+    {
+      id:Math.random(),
+      title: 'Основы React',
+      tags: ['React','Redux'],
+      image: noImage,
+      content: '',
+      information: {
+          views: 3423,
+          likes: 54,
+          comments: 9,
+      }
+  },
+])
 
 const [posts,setPosts] = useState([...postsBase])
 
@@ -54,7 +69,8 @@ const [posts,setPosts] = useState([...postsBase])
     <>
       <div className="cont max-w-screen-xl mr-auto ml-auto">
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
-        <Body search={search} posts={posts} setPosts={setPosts}></Body>
+        <Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsBase={postsBase}></Body>
+        <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>
       </div>
     </>
   )

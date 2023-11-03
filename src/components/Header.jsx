@@ -4,6 +4,7 @@ import notificationIcon from '../assets/icons/notifications.svg'
 import homeIcon from '../assets/icons/home.svg'
 import groupsIcon from '../assets/icons/groups.svg'
 import newsIcon from '../assets/icons/news.svg'
+import userIcon from '../assets/icons/user.png'
 import { useState } from 'react';
 
 const Header = ({search,setSearch,filterPosts}) => {
@@ -36,8 +37,8 @@ const Header = ({search,setSearch,filterPosts}) => {
                     <a href="#"><img className='p-2 rounded-lg mr-4 w-10' src={notificationIcon} alt="notifications" /></a>
                 </div>
                 <div className="nav-profile flex items-center">
-                    <div className="nav-profile-picture w-10 h-10 rounded-md bg-cyan-300 flex items-center justify-center mr-3">
-                        <a href="#">P</a>
+                    <div className="nav-profile-picture w-10 h-10 rounded-md flex items-center justify-center mr-3">
+                        <img className='h-5/6' src={userIcon} alt="user" />
                     </div>
                     <p className='text-white text-lg'>Nickname</p>
                 </div>

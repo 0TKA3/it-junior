@@ -8,6 +8,10 @@
     font-family: Montserrat;
 }
 
+.none {
+    display: none;
+}
+
 body {
     background-color: #1E252B;
 }
@@ -35,7 +39,7 @@ body {
 
 .parent {
     display: grid;
-    grid-template-columns: 3fr 10fr 3.5fr;
+    grid-template-columns: 4fr 10fr 2fr;
     grid-template-rows: 1fr;
     grid-column-gap: 20px;
 }
@@ -44,15 +48,16 @@ body {
     width: 100%;
     height: auto;
     border-radius: 16px;
-    /* background-color: black; */
 }
 
-.sidebar {
-    height: 842px;
-}
 
 .rightbar {
     height: 880px;
+}
+
+.sidebar {
+    height: 800px;
+    top: 100px;
 }
 
 .central-block-create-post {
@@ -92,4 +97,18 @@ body {
 
 .sidebar-popular-tags {
     background-color: #262D34;
+}
+
+.modal {
+    z-index: 100;
+    position: fixed;
+    width: 90vw;
+    height: 90vh;
+    bottom: 5%;
+    left: 5%;
+    background-color: #262D34;
+    /* display: flex; */
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #ccc;
 }

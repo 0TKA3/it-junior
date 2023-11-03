@@ -1,26 +1,59 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
+import javascriptIcon from '../assets/icons/javascript.svg'
+import reactIcon from '../assets/icons/react.svg'
+import userIcon from '../assets/icons/user.png'
 
 
-const Body = ({search,posts,setPosts}) => {
+const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
+
+
+
+    function searchTag(event) {
+        const target = event.currentTarget
+        const tagName = target.innerHTML.slice(1)
+        setPosts(postsBase.filter((post)=>{
+            if(post.title.toLowerCase().includes(tagName.toLowerCase())){
+              return true
+            }
+          }))
+    }
+
+    const tagCountHandler = (tagName)=>{
+        let count = postsBase.filter((post)=>{
+            if(post.tags.map((el)=>el.toLowerCase()).includes(tagName.toLowerCase())) {
+                return true
+            }
+        })
+        return count.length
+    }
 
     const [popularTags, setPopularTags] = useState([
         {
             tagName: 'javascript',
-            tagImage: '',
-            tagCount: '',
+            tagImage: javascriptIcon,
+            tagCount: tagCountHandler('javascript'),
+        },
+        {
+            tagName: 'react',
+            tagImage: reactIcon,
+            tagCount: tagCountHandler('react'),
         },
     ])
 
     return (
         <>
             <div className="main-body parent mt-5">
-                <div className="block sticky sidebar">
-                    <div className="sidebar-popular-tags w-full h-auto rounded-2xl p-5 flex flex-col">
-                        <h1 className='text-xl font-medium text-white'>Popular Tags</h1>
-                        {popularTags.map(()=>{
+                <div className="sticky sidebar">
+                    <div className="sidebar-popular-tags w-full h-auto rounded-2xl p-4 flex flex-col">
+                        <h1 className='text-xl font-medium text-white mb-4'>Popular Tags</h1>
+                        {popularTags.map((popTag)=>{
                             return(
-                                <div className='tag flex'>
-                                    <div className="pop-tag-image h-full w-auto"><img src="#" alt="#" /></div>
+                                <div className='tag flex h-11 mb-4'>
+                                    <div className="pop-tag-image h-11 w-11 rounded-md p-2 bg-slate-700 mr-3 flex items-center justify-center"><img className='h-4/5' src={popTag.tagImage} alt="#" /></div>
+                                    <div className="pop-tag-info flex flex-col">
+                                        <h3 className='text-white text-lg font-medium cursor-pointer' onClick={searchTag}>#{popTag.tagName}</h3>
+                                        <h2 className='text-slate-600 text-sm'>{popTag.tagCount} опубликовано</h2>
+                                    </div>
                                 </div>
                             )
                         })}
@@ -28,14 +61,14 @@ const Body = ({search,posts,setPosts}) => {
                 </div>
                 <div className="block central-block">
                     <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4">
-                        <div className="nav-profile-picture w-10 h-10 rounded-md bg-cyan-300 flex items-center justify-center mr-3">
-                            <a href="#">P</a>
+                        <div className="nav-profile-picture w-10 h-10 rounded-md flex items-center justify-center mr-3">
+                            <img className='h-5/6' src={userIcon} alt="" />
                         </div>
                         <div className="central-block-create-post w-4/6">
                             <input className="central-block-create-post-input w-full h-11 rounded-md p-3 outline-none" type="text" placeholder="О чем пишем?"/>
                         </div>
                         <div className="central-block-create-post-button">
-                            <button className="h-11 bg-white p-0 rounded-lg pl-3 pr-3 font-medium">Создать пост</button>
+                            <button className="h-11 bg-white p-0 rounded-lg pl-3 pr-3 font-medium" onClick={()=>{setModalVisibility('modal')}}>Создать пост</button>
                         </div>
                     </div>
                     <div className="central-block-posts mt-5 w-full" key={Math.random()}>
