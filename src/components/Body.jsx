@@ -68,7 +68,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
                             <input className="central-block-create-post-input w-full h-11 rounded-md p-3 outline-none" type="text" placeholder="О чем пишем?"/>
                         </div>
                         <div className="central-block-create-post-button">
-                            <button className="h-11 bg-white p-0 rounded-lg pl-3 pr-3 font-medium" onClick={()=>{setModalVisibility('modal')}}>Создать пост</button>
+                            <button className="create-post-button h-11 bg-slate-200 p-0 rounded-lg pl-3 pr-3 font-medium" onClick={()=>{setModalVisibility('modal')}}>Создать пост</button>
                         </div>
                     </div>
                     <div className="central-block-posts mt-5 w-full" key={Math.random()}>

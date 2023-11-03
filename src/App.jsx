@@ -31,22 +31,10 @@ function App() {
         content: '',
         information: {
             views: 3423,
-            likes: 54,
+            likes: 132,
             comments: 9,
         }
     },
-    {
-      id:Math.random(),
-      title: 'Основы React',
-      tags: ['React','Redux'],
-      image: noImage,
-      content: '',
-      information: {
-          views: 3423,
-          likes: 54,
-          comments: 9,
-      }
-  },
 ])
 
 const [posts,setPosts] = useState([...postsBase])

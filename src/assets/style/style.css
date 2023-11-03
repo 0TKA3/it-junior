@@ -39,7 +39,7 @@ body {
 
 .parent {
     display: grid;
-    grid-template-columns: 4fr 10fr 2fr;
+    grid-template-columns: 4fr 10fr 1fr;
     grid-template-rows: 1fr;
     grid-column-gap: 20px;
 }
@@ -111,4 +111,9 @@ body {
     border-radius: 16px;
     padding: 20px;
     border: 1px solid #ccc;
+}
+
+.create-post-button:hover {
+    background-color: #dddddd;
+    transition: background-color 0.3s ease-in;
 }
