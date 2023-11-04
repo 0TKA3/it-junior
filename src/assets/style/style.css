@@ -84,6 +84,8 @@ body {
     grid-column-gap: 20px;
 }
 .central-block-post-image {
+    width: 168px;
+    height: 168px;
     object-fit: cover;
 }
 

@@ -1,0 +1,45 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Как быстро изучить JavaScript?",
+      "tags": [
+        "JavaScript",
+        "ES6"
+      ],
+      "image": "https://usefulangle.com/img/thumb/javascript.png",
+      "content": "",
+      "information": {
+        "views": 10000,
+        "likes": 332,
+        "comments": 29
+      }
+    },
+    {
+      "id": 2,
+      "title": "Основы React",
+      "tags": [
+        "React",
+        "Redux"
+      ],
+      "image": "https://www.qcdesigns.online/wp-content/uploads/2023/02/pngwing.com-5-768x768.png",
+      "content": "",
+      "information": {
+        "views": 3423,
+        "likes": 132,
+        "comments": 9
+      }
+    }
+  ],
+  "users": [],
+  "popular-tags": [
+        {
+            "tagName": "javascript",
+            "tagImage": "http://localhost:5173/src//assets/icons/javascript.svg"
+        },
+        {
+            "tagName": "react",
+            "tagImage": "http://localhost:5173/src//assets/icons/react.svg"
+        }
+  ]
+}

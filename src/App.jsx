@@ -1,8 +1,8 @@
-import { ReactEventHandler, useState } from 'react'
+import { ReactEventHandler, useState, useEffect } from 'react'
+import axios from 'axios'
 import Header from './components/Header'
 import Body from './components/Body'
 import './assets/style/style.css'
-import noImage from './assets/images/noimage.jpg'
 import CreatePostModal from './components/CreatePostModal'
 
 
@@ -10,37 +10,30 @@ function App() {
 
   const [modalVisibility,setModalVisibility] = useState('modal none')
   const [search, setSearch] = useState('')
-  const [postsBase, setPostBase] = useState([
-    {   
-        id:Math.random(),
-        title: 'Как быстро изучить JavaScript?',
-        tags: ['JavaScript','ES6'],
-        image: noImage,
-        content: '',
-        information: {
-            views: 10000,
-            likes: 332,
-            comments: 29,
-        }
-    },
-    {
-        id:Math.random(),
-        title: 'Основы React',
-        tags: ['React','Redux'],
-        image: noImage,
-        content: '',
-        information: {
-            views: 3423,
-            likes: 132,
-            comments: 9,
-        }
-    },
-])
+  const [posts,setPosts] = useState([])
+  const [postsList, setPostsList] = useState([])
+  
+  useEffect(()=>{
+    axios
+    .get('http://localhost:3001/posts')
+    .then(data => {
+        setPostsList(data.data)
+    })
+},[])
 
-const [posts,setPosts] = useState([...postsBase])
+  useEffect(()=>{
+    axios
+    .get('http://localhost:3001/posts')
+    .then(data => {
+      setPosts(data.data)
+    })
+  },[])
+
+
+  
 
   function filterPosts() {
-    setPosts(postsBase.filter((post)=>{
+    setPosts(postsList.filter((post)=>{
       if(post.title.toLowerCase().includes(search.toLowerCase())){
         return true
       }
@@ -57,7 +50,7 @@ const [posts,setPosts] = useState([...postsBase])
     <>
       <div className="cont max-w-screen-xl mr-auto ml-auto">
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
-        <Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsBase={postsBase}></Body>
+        <Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>
         <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>
       </div>
     </>

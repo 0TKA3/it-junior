@@ -1,44 +1,38 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
 import javascriptIcon from '../assets/icons/javascript.svg'
-import reactIcon from '../assets/icons/react.svg'
+import axios from 'axios';
 import userIcon from '../assets/icons/user.png'
 
 
-const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
+
+const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList}) => {
+
+
 
 
 
     function searchTag(event) {
         const target = event.currentTarget
         const tagName = target.innerHTML.slice(1)
-        setPosts(postsBase.filter((post)=>{
+        console.log(postsList)
+        setPosts(postsList.filter((post)=>{
             if(post.title.toLowerCase().includes(tagName.toLowerCase())){
-              return true
-            }
-          }))
-    }
-
-    const tagCountHandler = (tagName)=>{
-        let count = postsBase.filter((post)=>{
-            if(post.tags.map((el)=>el.toLowerCase()).includes(tagName.toLowerCase())) {
                 return true
             }
-        })
-        return count.length
+        }))
+
     }
 
-    const [popularTags, setPopularTags] = useState([
-        {
-            tagName: 'javascript',
-            tagImage: javascriptIcon,
-            tagCount: tagCountHandler('javascript'),
-        },
-        {
-            tagName: 'react',
-            tagImage: reactIcon,
-            tagCount: tagCountHandler('react'),
-        },
-    ])
+
+    const [popularTags, setPopularTags] = useState([])
+    useEffect(()=>{
+        axios
+        .get('http://localhost:3001/popular-tags')
+        .then(data => {
+            setPopularTags(data.data)
+          })
+    },[])
+
 
     return (
         <>
@@ -48,11 +42,10 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
                         <h1 className='text-xl font-medium text-white mb-4'>Popular Tags</h1>
                         {popularTags.map((popTag)=>{
                             return(
-                                <div className='tag flex h-11 mb-4'>
+                                <div className='tag flex h-11 mb-4 items-center' key={popTag.tagName}>
                                     <div className="pop-tag-image h-11 w-11 rounded-md p-2 bg-slate-700 mr-3 flex items-center justify-center"><img className='h-4/5' src={popTag.tagImage} alt="#" /></div>
                                     <div className="pop-tag-info flex flex-col">
                                         <h3 className='text-white text-lg font-medium cursor-pointer' onClick={searchTag}>#{popTag.tagName}</h3>
-                                        <h2 className='text-slate-600 text-sm'>{popTag.tagCount} опубликовано</h2>
                                     </div>
                                 </div>
                             )
@@ -73,8 +66,8 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
                     </div>
                     <div className="central-block-posts mt-5 w-full" key={Math.random()}>
                         {posts.map((post)=>{
-                            return(<>
-                                <div className="central-block-post h-52 w-full p-5 rounded-2xl" key={post.id}>
+                            return(<div key={post.id}>
+                                <div className="central-block-post h-52 w-full p-5 rounded-2xl">
                                     <img src={post.image}  alt={post.title} className="central-block-post-image w-full h-full rounded-2xl" />
                                     <div className="post-right-side flex flex-col justify-around">
                                         <h1 className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1'>{post.title}</h1>
@@ -92,7 +85,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsBase}) => {
                                         </div>
                                     </div>
                                 </div>
-                            </>)
+                            </div>)
                         })}
                     </div>
                 </div>
