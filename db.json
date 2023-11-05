@@ -10,13 +10,12 @@
       "image": "https://usefulangle.com/img/thumb/javascript.png",
       "content": "",
       "information": {
-        "views": 0,
+        "views": 4,
         "likes": 0,
         "comments": 0
       },
       "date": "05-11-2023"
     },
-    
     {
       "id": 2,
       "title": "Основы React",
@@ -35,26 +34,25 @@
   ],
   "users": [],
   "popular-tags": [
-        {
-            "tagName": "javascript",
-            "tagImage": "http://localhost:5173/src//assets/icons/javascript.svg"
-        },
-        {
-            "tagName": "react",
-            "tagImage": "http://localhost:5173/src//assets/icons/react.svg"
-        },
-        {
-          "tagName": "vue",
-          "tagImage": "http://localhost:5173/src//assets/icons/vue.svg"
-        },
-        {
-          "tagName": "python",
-          "tagImage": "http://localhost:5173/src//assets/icons/python.svg"
-        },
-        {
-          "tagName": "angular",
-          "tagImage": "http://localhost:5173/src//assets/icons/angular.svg"
-        }
-        
+    {
+      "tagName": "javascript",
+      "tagImage": "http://localhost:5173/src//assets/icons/javascript.svg"
+    },
+    {
+      "tagName": "react",
+      "tagImage": "http://localhost:5173/src//assets/icons/react.svg"
+    },
+    {
+      "tagName": "vue",
+      "tagImage": "http://localhost:5173/src//assets/icons/vue.svg"
+    },
+    {
+      "tagName": "python",
+      "tagImage": "http://localhost:5173/src//assets/icons/python.svg"
+    },
+    {
+      "tagName": "angular",
+      "tagImage": "http://localhost:5173/src//assets/icons/angular.svg"
+    }
   ]
 }
