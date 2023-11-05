@@ -2,13 +2,11 @@ import { ReactEventHandler, useEffect, useState } from 'react';
 import javascriptIcon from '../assets/icons/javascript.svg'
 import axios from 'axios';
 import userIcon from '../assets/icons/user.png'
+import Article from '../pages/Article';
 
 
 
 const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList}) => {
-
-
-
 
 
     function searchTag(event) {
@@ -33,13 +31,13 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
           })
     },[])
 
-
     return (
         <>
             <div className="main-body parent mt-5">
                 <div className="sticky sidebar">
                     <div className="sidebar-popular-tags w-full h-auto rounded-2xl p-4 flex flex-col">
                         <h1 className='text-xl font-medium text-white mb-4'>Popular Tags</h1>
+
                         {popularTags.map((popTag)=>{
                             return(
                                 <div className='tag flex h-11 mb-4 items-center' key={popTag.tagName}>
@@ -70,7 +68,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                                 <div className="central-block-post h-52 w-full p-5 rounded-2xl">
                                     <img src={post.image}  alt={post.title} className="central-block-post-image w-full h-full rounded-2xl" />
                                     <div className="post-right-side flex flex-col justify-around">
-                                        <h1 className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1'>{post.title}</h1>
+                                        <a href="#"><h1 className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1'>{post.title}</h1></a>
                                         <div className="central-block-post-tags flex gap-3">
                                             {post.tags.map((tag)=>{
                                                 return (
@@ -87,6 +85,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                                 </div>
                             </div>)
                         })}
+                        
                     </div>
                 </div>
                 <div className="block sticky rightbar"></div>

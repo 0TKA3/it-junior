@@ -10,7 +10,11 @@ import { useState } from 'react';
 const Header = ({search,setSearch,filterPosts}) => {
 
 
-
+    function enterSearchHandler(e) {
+        if(e.key=='Enter') {
+            filterPosts()
+        }
+    }
 
 
     return (
@@ -29,7 +33,7 @@ const Header = ({search,setSearch,filterPosts}) => {
                     </li>
                 </ul>
                 <div className="header-search w-1/4 h-1/2 flex rounded-lg pr-5 pl-5 justify-between mr-2">
-                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск" value={search} onChange={((e)=>setSearch(e.target.value))} onBlur={filterPosts}/>
+                    <input className="outline-none bg-transparent text-white w-10/12" type="text" placeholder="Поиск" value={search} onChange={((e)=>setSearch(e.target.value))} onKeyDown={enterSearchHandler}/>
                     <img className='w-5 cursor-pointer' src={searchIcon} alt="search" onClick={filterPosts}/>
                 </div>
                 <div className="messages-group flex">
