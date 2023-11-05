@@ -120,3 +120,11 @@ body {
     background-color: #dddddd;
     transition: background-color 0.3s ease-in;
 }
+
+.article-block{
+    background-color: #262D34;
+}
+
+.article-tag {
+    background-color: #2a343c;
+}

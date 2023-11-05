@@ -6,6 +6,7 @@ import groupsIcon from '../assets/icons/groups.svg'
 import newsIcon from '../assets/icons/news.svg'
 import userIcon from '../assets/icons/user.png'
 import { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 
 const Header = ({search,setSearch,filterPosts}) => {
 
@@ -23,7 +24,7 @@ const Header = ({search,setSearch,filterPosts}) => {
                 <h1 className="header-nav-brand text-2xl font-extrabold">it-junior.ru</h1>
                 <ul className="flex nav-links">
                     <li className="mr-8 h-10 flex">
-                        <a href="#" className="header-nav-element p-2 pl-3 pr-3 rounded-md text-md font-medium"><img src={homeIcon}alt="Домой" /></a>
+                        <Link to="/home" className="header-nav-element p-2 pl-3 pr-3 rounded-md text-md font-medium"><img src={homeIcon}alt="Домой" /></Link>
                     </li>
                     <li className="mr-8 h-10 flex">
                         <a href="#" className="header-nav-element p-2 pl-3 pr-3  rounded-md text-md font-medium"><img className='w-full h-full' src={newsIcon} alt="Новости" /></a>

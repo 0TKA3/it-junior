@@ -4,6 +4,8 @@ import Header from './components/Header'
 import Body from './components/Body'
 import './assets/style/style.css'
 import CreatePostModal from './components/CreatePostModal'
+import Article from './pages/Article'
+import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
 
 
 function App() {
@@ -46,14 +48,17 @@ function App() {
     }))
   }
 
+
   return (
-    <>
+    <Router>
       <div className="cont max-w-screen-xl mr-auto ml-auto">
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
-        <Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>
-        <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>
+        <Routes>
+          <Route path='/home' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
+          <Route path='/article' element={<Article posts={posts}></Article>}></Route>
+        </Routes>
       </div>
-    </>
+    </Router>
   )
 }
 

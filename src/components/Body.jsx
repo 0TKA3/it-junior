@@ -3,10 +3,13 @@ import javascriptIcon from '../assets/icons/javascript.svg'
 import axios from 'axios';
 import userIcon from '../assets/icons/user.png'
 import Article from '../pages/Article';
+import {Link} from 'react-router-dom'
 
 
 
 const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList}) => {
+
+
 
 
     function searchTag(event) {
@@ -30,6 +33,10 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
             setPopularTags(data.data)
           })
     },[])
+    function openArticleHandler(e) {
+        localStorage.setItem('currentArticle', e.target.getAttribute('articleid'))
+    }
+
 
     return (
         <>
@@ -68,7 +75,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                                 <div className="central-block-post h-52 w-full p-5 rounded-2xl">
                                     <img src={post.image}  alt={post.title} className="central-block-post-image w-full h-full rounded-2xl" />
                                     <div className="post-right-side flex flex-col justify-around">
-                                        <a href="#"><h1 className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1'>{post.title}</h1></a>
+                                        <Link to={'/article'} onClick={openArticleHandler}><h1 articleid={post.id}className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1' >{post.title}</h1></Link>
                                         <div className="central-block-post-tags flex gap-3">
                                             {post.tags.map((tag)=>{
                                                 return (
