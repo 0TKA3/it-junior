@@ -69,7 +69,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                     </div>
                 </div>
                 <div className="block central-block">
-                    <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4">
+                    {/* <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4">
                         <div className="nav-profile-picture w-10 h-10 rounded-md flex items-center justify-center mr-3">
                             <img className='h-5/6' src={userIcon} alt="" />
                         </div>
@@ -79,8 +79,8 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                         <div className="central-block-create-post-button">
                             <button className="create-post-button h-11 bg-slate-200 p-0 rounded-lg pl-3 pr-3 font-medium" onClick={()=>{setModalVisibility('modal')}}>Создать пост</button>
                         </div>
-                    </div>
-                    <div className="central-block-posts mt-5 w-full" key={Math.random()}>
+                    </div> */}
+                    <div className="central-block-posts w-full" key={Math.random()}>
                         {posts.map((post)=>{
                             return(<div key={post.id}>
                                 <div className="central-block-post h-52 w-full p-5 rounded-2xl">

@@ -58,6 +58,7 @@ function App() {
           <Route path='/article' element={<Article posts={posts}></Article>}></Route>
         </Routes>
       </div>
+      <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>
     </Router>
   )
 }
