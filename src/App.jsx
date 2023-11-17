@@ -6,6 +6,7 @@ import './assets/style/style.css'
 import CreatePostModal from './components/CreatePostModal'
 import Article from './pages/Article'
 import { BrowserRouter as Router, Route, Routes, Link, Outlet } from 'react-router-dom';
+import Bookmarks from './pages/Bookmarks'
 
 
 function App() {
@@ -55,7 +56,8 @@ function App() {
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
         <Routes>
           <Route path='/' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
-          <Route path='/article' element={<Article posts={posts}></Article>}></Route>
+          <Route path='/article:id' element={<Article posts={posts}></Article>}></Route>
+          <Route path='/bookmarks' element={<Bookmarks></Bookmarks>}></Route>
         </Routes>
       </div>
       <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>

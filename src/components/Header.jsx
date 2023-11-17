@@ -24,7 +24,7 @@ const Header = ({search,setSearch,filterPosts}) => {
                         <a href="#" className="header-nav-element p-2 pl-3 pr-3  rounded-md text-md font-normal flex">Подборки</a>
                     </li>
                     <li className="mr-2 h-10 flex">
-                        <a href="#" className="header-nav-element p-2 pl-3 pr-3  rounded-md text-md font-normal flex">Закладки</a>
+                        <Link to="/bookmarks" className="header-nav-element p-2 pl-3 pr-3  rounded-md text-md font-normal flex">Закладки</Link>
                     </li>
                 </ul>
                 <div className="header-search w-1/3 h-1/2 flex rounded-lg pr-5 pl-5 justify-between mr-2">
@@ -33,7 +33,6 @@ const Header = ({search,setSearch,filterPosts}) => {
                 </div>
             </header>
         </div>
-        
     );
 }
  

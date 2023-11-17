@@ -34,26 +34,6 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
             setPopularTags(data.data)
           })
     },[])
-//     function openArticleHandler(e) {
-//         localStorage.setItem('currentArticle', e.target.getAttribute('articleid'))
-//         let postToEdit
-//         axios
-//         .get(`http://localhost:3001/posts/${localStorage.getItem('currentArticle')}`)
-//         .then(function (data) {
-//             return postToEdit = data.data
-//           });
-//         setTimeout(()=>{
-//             postToEdit.information.views = postToEdit.information.views+1
-//             console.log(postToEdit.information.views)
-//             axios.put(`http://localhost:3001/posts/${e.target.getAttribute('articleid')}`, postToEdit)
-//         },50)  
-// }
-
-    // const [bookMarkImage,setBookMarkImage] = useState(bookMark)
-
-    // function addToBookMark(event) {
-    //     console.log(event.target.getAttribute('articleid'))
-    // }
 
     return (
         <>
@@ -87,32 +67,11 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                         </div>
                     </div>
                     <div className="central-block-posts w-full" key={Math.random()}>
-                        {/* {posts.map((post)=>{
-                            return(<div key={post.id}>
-                                <div className="central-block-post h-52 w-full p-5 rounded-2xl">
-                                    <img src={post.image}  alt={post.title} className="central-block-post-image w-full h-full rounded-2xl" />
-                                    <div className="post-right-side flex flex-col justify-around">
-                                        <div className='flex justify-between items-center'>
-                                            <Link to={'/article'} onClick={openArticleHandler}><h1 articleid={post.id} className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1' >{post.title}</h1></Link>
-                                            <button onClick={addToBookMark}><img articleid={post.id} className='w-6 h-6 -mt-2' src={bookMarkImage} alt="#" /></button>
-                                        </div>
-                                        <div className="central-block-post-tags flex gap-3">
-                                            {post.tags.map((tag)=>{
-                                                return (
-                                                    <div className="central-block-post-tag text-slate-400 p-1 pr-2 pl-2 rounded-3xl" key={tag}><p className='text-xs'></p>{tag}</div> 
-                                                )
-                                            })}
-                                        </div>
-                                        <div className="central-block-post-information flex gap-6">
-                                            <p className='text-sm text-slate-300 '>{post.information.views} Просмотров</p>
-                                            <p className='text-sm text-slate-300 '>{post.information.likes} Лайков</p>
-                                            <p className='text-sm text-slate-300 '>{post.information.comments} Комментариев</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>)
-                        })} */}
-                        <Post posts={posts}></Post>
+                    {posts.map((post)=>{
+                        return(
+                            <Post post={post} key={post.id}></Post>
+                        )
+                    })}
                     </div>
                 </div>
                 <div className="block sticky rightbar"></div>

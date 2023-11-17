@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Article = ({ posts }) => {
   const [article, setArticle] = useState([]);
-  const currentArticle = localStorage.getItem("currentArticle");
   const [htmlMarkup, setHtmlMarkup] = useState('')
   
   useEffect(() => {
