@@ -56,7 +56,7 @@ function App() {
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
         <Routes>
           <Route path='/' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
-          <Route path='/article:id' element={<Article posts={posts}></Article>}></Route>
+          <Route path='/article/:id' element={<Article posts={posts} />} />
           <Route path='/bookmarks' element={<Bookmarks></Bookmarks>}></Route>
         </Routes>
       </div>
