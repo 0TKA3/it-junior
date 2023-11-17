@@ -1,9 +1,10 @@
 import { ReactEventHandler, useEffect, useState } from 'react';
 import javascriptIcon from '../assets/icons/javascript.svg'
 import axios from 'axios';
-import userIcon from '../assets/icons/user.png'
 import Article from '../pages/Article';
+import userIcon from '../assets/icons/user.png'
 import {Link} from 'react-router-dom'
+import Post from './Post';
 
 
 
@@ -33,21 +34,26 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
             setPopularTags(data.data)
           })
     },[])
-    function openArticleHandler(e) {
-        localStorage.setItem('currentArticle', e.target.getAttribute('articleid'))
-        let postToEdit
-        axios
-        .get(`http://localhost:3001/posts/${localStorage.getItem('currentArticle')}`)
-        .then(function (data) {
-            return postToEdit = data.data
-          });
-        setTimeout(()=>{
-            postToEdit.information.views = postToEdit.information.views+1
-            console.log(postToEdit.information.views)
-            axios.put(`http://localhost:3001/posts/${e.target.getAttribute('articleid')}`, postToEdit)
-        },50)
-        
-}
+//     function openArticleHandler(e) {
+//         localStorage.setItem('currentArticle', e.target.getAttribute('articleid'))
+//         let postToEdit
+//         axios
+//         .get(`http://localhost:3001/posts/${localStorage.getItem('currentArticle')}`)
+//         .then(function (data) {
+//             return postToEdit = data.data
+//           });
+//         setTimeout(()=>{
+//             postToEdit.information.views = postToEdit.information.views+1
+//             console.log(postToEdit.information.views)
+//             axios.put(`http://localhost:3001/posts/${e.target.getAttribute('articleid')}`, postToEdit)
+//         },50)  
+// }
+
+    // const [bookMarkImage,setBookMarkImage] = useState(bookMark)
+
+    // function addToBookMark(event) {
+    //     console.log(event.target.getAttribute('articleid'))
+    // }
 
     return (
         <>
@@ -69,7 +75,7 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                     </div>
                 </div>
                 <div className="block central-block">
-                    {/* <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4">
+                    <div className="central-block-create-post w-full h-20 bg-slate-200 rounded-2xl flex p-5 gap-4 mb-3">
                         <div className="nav-profile-picture w-10 h-10 rounded-md flex items-center justify-center mr-3">
                             <img className='h-5/6' src={userIcon} alt="" />
                         </div>
@@ -79,14 +85,17 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                         <div className="central-block-create-post-button">
                             <button className="create-post-button h-11 bg-slate-200 p-0 rounded-lg pl-3 pr-3 font-medium" onClick={()=>{setModalVisibility('modal')}}>Создать пост</button>
                         </div>
-                    </div> */}
+                    </div>
                     <div className="central-block-posts w-full" key={Math.random()}>
-                        {posts.map((post)=>{
+                        {/* {posts.map((post)=>{
                             return(<div key={post.id}>
                                 <div className="central-block-post h-52 w-full p-5 rounded-2xl">
                                     <img src={post.image}  alt={post.title} className="central-block-post-image w-full h-full rounded-2xl" />
                                     <div className="post-right-side flex flex-col justify-around">
-                                        <Link to={'/article'} onClick={openArticleHandler}><h1 articleid={post.id}className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1' >{post.title}</h1></Link>
+                                        <div className='flex justify-between items-center'>
+                                            <Link to={'/article'} onClick={openArticleHandler}><h1 articleid={post.id} className='central-block-post-title text-white font-medium text-xl max-h-14 mb-1' >{post.title}</h1></Link>
+                                            <button onClick={addToBookMark}><img articleid={post.id} className='w-6 h-6 -mt-2' src={bookMarkImage} alt="#" /></button>
+                                        </div>
                                         <div className="central-block-post-tags flex gap-3">
                                             {post.tags.map((tag)=>{
                                                 return (
@@ -102,8 +111,8 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
                                     </div>
                                 </div>
                             </div>)
-                        })}
-                        
+                        })} */}
+                        <Post posts={posts}></Post>
                     </div>
                 </div>
                 <div className="block sticky rightbar"></div>

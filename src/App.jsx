@@ -54,7 +54,7 @@ function App() {
       <div className="cont max-w-screen-xl mr-auto ml-auto">
         <Header search={search} setSearch={setSearch} filterPosts={filterPosts}></Header>
         <Routes>
-          <Route path='/home' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
+          <Route path='/' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
           <Route path='/article' element={<Article posts={posts}></Article>}></Route>
         </Routes>
       </div>

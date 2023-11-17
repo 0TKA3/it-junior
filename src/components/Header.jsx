@@ -18,7 +18,7 @@ const Header = ({search,setSearch,filterPosts}) => {
                 <h1 className="header-nav-brand text-2xl font-extrabold">it-junior.ru</h1>
                 <ul className="flex nav-links w-1/2 justify-start">
                     <li className="mr-2 h-10 flex">
-                        <Link to="/home" className="header-nav-element p-2 pl-3 pr-3 rounded-md text-md font-normal">Домой</Link>
+                        <Link to="/" className="header-nav-element p-2 pl-3 pr-3 rounded-md text-md font-normal">Домой</Link>
                     </li>
                     <li className="mr-2 h-10 flex">
                         <a href="#" className="header-nav-element p-2 pl-3 pr-3  rounded-md text-md font-normal flex">Подборки</a>
