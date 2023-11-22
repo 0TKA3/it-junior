@@ -57,7 +57,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Body search={search} posts={posts} setPosts={setPosts} setModalVisibility={setModalVisibility} postsList={postsList} setPostsList={setPostsList}></Body>}></Route>
           <Route path='/article/:id' element={<Article posts={posts} />} />
-          <Route path='/bookmarks' element={<Bookmarks></Bookmarks>}></Route>
+          <Route path='/bookmarks' element={<Bookmarks posts={posts} setPosts={setPosts}></Bookmarks>}></Route>
         </Routes>
       </div>
       <CreatePostModal modalVisibility={modalVisibility} setModalVisibility={setModalVisibility}></CreatePostModal>

@@ -145,3 +145,9 @@ body {
     word-spacing: 5px;
     line-height: 28px;
 }
+
+.bookmarks__posts-container {
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 20px;
+}

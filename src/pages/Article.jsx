@@ -17,7 +17,6 @@ const Article = () => {
         console.error('Error fetching article:', error);
       }
         const newPost = await axios.get(`http://localhost:3001/posts/${id}`)
-        console.log(newPost.data)
         newPost.data.information.views = newPost.data.information.views + 1
         axios.put(`http://localhost:3001/posts/${id}`, newPost.data)
     };

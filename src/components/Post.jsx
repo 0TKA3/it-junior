@@ -9,7 +9,6 @@ const Post = ({ post }) => {
   useEffect(()=>{
     if(localStorage.getItem('marks')) {
       const storage = JSON.parse(localStorage.getItem('marks'))
-      console.log(storage)
       storage.find((item)=>{
         if(item == post.id) {
           setBookMarkImage(bookMarkRed)

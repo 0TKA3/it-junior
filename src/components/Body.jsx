@@ -16,7 +16,6 @@ const Body = ({search,posts,setPosts,setModalVisibility,postsList,setPostsList})
     function searchTag(event) {
         const target = event.currentTarget
         const tagName = target.innerHTML.slice(1)
-        console.log(postsList)
         setPosts(postsList.filter((post)=>{
             if(post.title.toLowerCase().includes(tagName.toLowerCase())){
                 return true
