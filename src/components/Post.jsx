@@ -1,16 +1,45 @@
 import { Link } from "react-router-dom";
 import bookMark from "../assets/icons/bookmark.svg";
 import bookMarkRed from "../assets/icons/bookmarkRed.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Post = ({ post }) => {
   const [bookMarkImage, setBookMarkImage] = useState(bookMark);
 
-
+  useEffect(()=>{
+    if(localStorage.getItem('marks')) {
+      const storage = JSON.parse(localStorage.getItem('marks'))
+      console.log(storage)
+      storage.find((item)=>{
+        if(item == post.id) {
+          setBookMarkImage(bookMarkRed)
+        }
+      })
+    }
+  },[])
 
   function addToBookMark(event) {
-    bookMarkImage == bookMark ? setBookMarkImage(bookMarkRed) : setBookMarkImage(bookMark)
-    console.log(event.target.getAttribute("articleid"));
+    const markId = event.target.getAttribute("articleid");
+    if (localStorage.getItem("marks")) {
+      const marksArray = JSON.parse(localStorage.getItem("marks"));
+
+      if (marksArray.find((item) => item == markId)) {
+        const filteredArray = marksArray.filter((item) => item !== markId);
+        localStorage.setItem("marks", JSON.stringify(filteredArray));
+        setBookMarkImage(bookMark)
+      } else {
+        marksArray.push(markId);
+        localStorage.setItem("marks", JSON.stringify(marksArray));
+        setBookMarkImage(bookMarkRed)
+      }
+    } else {
+      const marksArray = [];
+      marksArray.push(markId);
+      localStorage.setItem("marks", JSON.stringify(marksArray));
+      setBookMarkImage(bookMarkRed)
+    }
+
+
   }
 
   return (
@@ -24,7 +53,7 @@ const Post = ({ post }) => {
           />
           <div className="post-right-side flex flex-col justify-around">
             <div className="flex justify-between items-center">
-              <Link to={"/article/"+post.id}>
+              <Link to={"/article/" + post.id}>
                 <h1
                   articleid={post.id}
                   className="central-block-post-title text-white font-medium text-xl max-h-14 mb-1"

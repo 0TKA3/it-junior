@@ -134,3 +134,14 @@ body {
 .article-tag {
     background-color: #2a343c;
 }
+
+.content h1,h2,h3,h4,h5,h6 {
+    font-size: 32px;
+    margin: 15px 0px;
+    font-weight: bold;
+}
+
+.content p {
+    word-spacing: 5px;
+    line-height: 28px;
+}
